@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Blog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    #blogForm {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 600px;
+      margin: 0 auto 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    #blogForm input, #blogForm textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #blogForm button {
+      background: #28a745;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #blogPosts {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .post {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .post h2 {
+      margin: 0 0 10px;
+      color: #444;
+    }
+    .post p {
+      margin: 0;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Blog</h1>
+
+  <form id="blogForm">
+    <input type="text" id="title" placeholder="Enter blog title" required />
+    <textarea id="content" placeholder="Write your blog content" rows="5" required></textarea>
+    <button type="submit">Add Post</button>
+  </form>
+
+  <div id="blogPosts"></div>
+
+  <script>
+    const form = document.getElementById('blogForm');
+    const postsContainer = document.getElementById('blogPosts');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const title = document.getElementById('title').value;
+      const content = document.getElementById('content').value;
+
+      const post = document.createElement('div');
+      post.classList.add('post');
+      post.innerHTML = `<h2>${title}</h2><p>${content}</p>`;
+
+      postsContainer.prepend(post); // adds new post at the top
+
+      form.reset(); // clear form after submitting
+    });
+  </script>
+</body>
+</html>
